@@ -8,8 +8,6 @@ An open-source AI coding assistant platform that allows you to run Claude Code o
 - **Complete Privacy**: Your code never leaves your server
 - **Cost Effective**: Reduce AI coding assistant costs by 80%+ compared to commercial alternatives
 - **Open Source**: Completely free and open source (MIT license)
-- **Easy Deployment**: One-click deployment to any cloud server
-- **Highly Extensible**: Plugin system allows for custom functionality
 
 ## 🚀 Quick Start
 

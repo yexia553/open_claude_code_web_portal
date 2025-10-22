@@ -254,7 +254,7 @@
                 display: none;
             }
 
-            .hero-section, .features-section, .tech-section {
+            .hero-section, .features-section {
                 page-break-inside: avoid;
                 margin-bottom: 2rem;
             }
@@ -330,8 +330,7 @@
             padding-bottom: 1rem;
         }
 
-        .landscape-small .feature-section,
-        .landscape-small .tech-section {
+        .landscape-small .feature-section {
             padding: 1.5rem 0;
         }
 
@@ -566,98 +565,11 @@
                     </p>
                 </div>
 
-                <!-- Feature 5 -->
-                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                        <i class="fas fa-cloud text-white text-lg sm:text-xl"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.deployment.title">Easy Deployment</h3>
-                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.deployment.description">
-                        One-click deployment to any cloud server. Compatible with Cloudflare Pages
-                        for frontend hosting.
-                    </p>
-                </div>
-
-                <!-- Feature 6 -->
-                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                        <i class="fas fa-plug text-white text-lg sm:text-xl"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.extensible.title">Highly Extensible</h3>
-                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.extensible.description">
-                        Plugin system allows for custom functionality. Integrates with your
-                        existing development tools.
-                    </p>
-                </div>
-            </div>
+              </div>
         </div>
     </section>
 
-    <!-- Technical Specs -->
-    <section class="py-12 sm:py-16 bg-gray-50 tech-section">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div class="text-center mb-8 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-i18n="tech.title">Technical Architecture</h2>
-                <p class="text-lg sm:text-xl text-gray-600" data-i18n="tech.subtitle">
-                    Built with modern web technologies for optimal performance
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4" data-i18n="tech.frontend.title">Frontend</h3>
-                    <ul class="space-y-2 sm:space-y-3 text-gray-600 text-sm sm:text-base">
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Modern HTML5 + CSS3 + JavaScript</li>
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Tailwind CSS for responsive design</li>
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Monaco Editor for code editing</li>
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Cloudflare Pages compatible</li>
-                    </ul>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4" data-i18n="tech.backend.title">Backend</h3>
-                    <ul class="space-y-2 sm:space-y-3 text-gray-600 text-sm sm:text-base">
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Node.js/Python server support</li>
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>WebSocket for real-time communication</li>
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Unified AI model API interface</li>
-                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Easy model switching and configuration</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Supported Models -->
-            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center" data-i18n="tech.supportedModels.title">Supported AI Models</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-blue-600 text-sm sm:text-base"></i>
-                        </div>
-                        <span class="font-medium text-sm sm:text-base">GLM-4.6</span>
-                    </div>
-                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-green-600 text-sm sm:text-base"></i>
-                        </div>
-                        <span class="font-medium text-sm sm:text-base">Kimi K2</span>
-                    </div>
-                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-purple-600 text-sm sm:text-base"></i>
-                        </div>
-                        <span class="font-medium text-sm sm:text-base">Qwen Series</span>
-                    </div>
-                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-orange-600 text-sm sm:text-base"></i>
-                        </div>
-                        <span class="font-medium text-sm sm:text-base">And More...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+  
     <!-- CTA Section -->
     <section class="py-12 sm:py-16 hero-gradient text-white cta-section">
         <div class="max-w-4xl mx-auto text-center px-3 sm:px-6 lg:px-8">
