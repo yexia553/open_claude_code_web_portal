@@ -1,7 +1,11 @@
 // Main JavaScript for Open Claude Code Web
 class OpenClaudeCodeWeb {
     constructor() {
+        this.isMobile = window.innerWidth <= 768;
+        this.isSmallScreen = window.innerWidth <= 575;
+        this.touchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         this.init();
+        this.initResponsiveHandlers();
     }
 
     init() {
@@ -10,6 +14,199 @@ class OpenClaudeCodeWeb {
         this.initScrollEffects();
         this.initMobileMenu();
         this.initPerformanceOptimizations();
+        this.initResponsiveFeatures();
+    }
+
+    // Initialize responsive feature handlers
+    initResponsiveHandlers() {
+        // Handle window resize
+        window.addEventListener('resize', this.debounce(() => {
+            const newIsMobile = window.innerWidth <= 768;
+            const newIsSmallScreen = window.innerWidth <= 575;
+
+            if (newIsMobile !== this.isMobile || newIsSmallScreen !== this.isSmallScreen) {
+                this.isMobile = newIsMobile;
+                this.isSmallScreen = newIsSmallScreen;
+                this.handleViewportChange();
+            }
+        }, 250));
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                this.handleOrientationChange();
+            }, 100);
+        });
+    }
+
+    // Handle viewport size changes
+    handleViewportChange() {
+        // Re-initialize features that depend on screen size
+        if (this.isMobile) {
+            this.initMobileOptimizations();
+        } else {
+            this.initDesktopOptimizations();
+        }
+
+        // Update navigation behavior
+        this.updateNavigationBehavior();
+
+        // Adjust animations based on device capabilities
+        this.adjustAnimations();
+    }
+
+    // Handle device orientation changes
+    handleOrientationChange() {
+        const isLandscape = window.innerWidth > window.innerHeight;
+
+        if (isLandscape && window.innerHeight <= 500) {
+            // Optimize for small landscape screens
+            document.body.classList.add('landscape-small');
+        } else {
+            document.body.classList.remove('landscape-small');
+        }
+    }
+
+    // Initialize mobile-specific features
+    initMobileOptimizations() {
+        // Optimize scrolling performance on mobile
+        if (this.touchDevice) {
+            document.body.style.touchAction = 'pan-y';
+
+            // Add touch feedback for interactive elements
+            this.addTouchFeedback();
+        }
+
+        // Reduce motion on mobile if preferred
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.body.classList.add('reduced-motion');
+        }
+    }
+
+    // Initialize desktop-specific features
+    initDesktopOptimizations() {
+        // Enable hover effects and animations on desktop
+        document.body.classList.remove('reduced-motion');
+
+        // Re-enable typing effect if appropriate
+        if (window.innerWidth > 768 && document.querySelector('.hero-title')) {
+            this.initTypingEffect();
+        }
+    }
+
+    // Add touch feedback for mobile devices
+    addTouchFeedback() {
+        const touchElements = document.querySelectorAll('a, button, .feature-card, .github-btn');
+
+        touchElements.forEach(element => {
+            element.addEventListener('touchstart', () => {
+                element.style.transform = 'scale(0.98)';
+            }, { passive: true });
+
+            element.addEventListener('touchend', () => {
+                element.style.transform = 'scale(1)';
+            }, { passive: true });
+        });
+    }
+
+    // Update navigation behavior based on screen size
+    updateNavigationBehavior() {
+        const nav = document.querySelector('nav');
+        const navHeight = nav ? nav.offsetHeight : 64;
+
+        // Update scroll offset for smooth scrolling
+        this.navHeight = navHeight;
+
+        // Adjust navigation for very small screens
+        if (this.isSmallScreen) {
+            nav.classList.add('nav-compact');
+        } else {
+            nav.classList.remove('nav-compact');
+        }
+    }
+
+    // Adjust animations based on device capabilities
+    adjustAnimations() {
+        if (this.isMobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Disable or reduce animations on mobile/preference
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.transition = 'none';
+            });
+        } else {
+            // Re-enable animations on desktop
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            });
+        }
+    }
+
+    // Initialize responsive-specific features
+    initResponsiveFeatures() {
+        // Initialize viewport meta tag for better mobile experience
+        this.optimizeViewportMeta();
+
+        // Handle safe area insets for modern mobile devices
+        this.handleSafeAreaInsets();
+
+        // Initialize responsive images if any
+        this.initResponsiveImages();
+    }
+
+    // Optimize viewport meta tag
+    optimizeViewportMeta() {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport && this.touchDevice) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+        }
+    }
+
+    // Handle safe area insets for notch phones
+    handleSafeAreaInsets() {
+        const root = document.documentElement;
+
+        // Check if device supports env() variables for safe areas
+        if (CSS.supports('padding-bottom', 'env(safe-area-inset-bottom)')) {
+            root.style.setProperty('--safe-area-top', 'env(safe-area-inset-top)');
+            root.style.setProperty('--safe-area-bottom', 'env(safe-area-inset-bottom)');
+            root.style.setProperty('--safe-area-left', 'env(safe-area-inset-left)');
+            root.style.setProperty('--safe-area-right', 'env(safe-area-inset-right)');
+
+            // Add safe area padding to body
+            document.body.style.paddingTop = 'var(--safe-area-top, 0px)';
+        }
+    }
+
+    // Initialize responsive images
+    initResponsiveImages() {
+        // Placeholder for future image optimization
+        // This would handle responsive image loading and lazy loading
+    }
+
+    // Enhanced smooth scrolling with mobile considerations
+    initSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    const navHeight = this.navHeight || document.querySelector('nav')?.offsetHeight || 64;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+
+                    // Use different scroll behavior based on device
+                    if (this.isMobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'auto' // Instant scroll on mobile/preference
+                        });
+                    } else {
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
     }
 
     // Fetch GitHub repository stars
@@ -233,23 +430,42 @@ class OpenClaudeCodeWeb {
         );
     }
 
+    // Debounce utility function for performance optimization
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
     // Add typing effect for hero title (optional enhancement)
     initTypingEffect() {
         const heroTitle = document.querySelector('.hero-title');
-        if (heroTitle && window.innerWidth > 768) {
-            const text = heroTitle.textContent;
-            heroTitle.textContent = '';
-            let index = 0;
+        if (heroTitle && !this.isMobile && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const text = heroTitle.querySelector('[data-i18n="hero.title"]').textContent;
+            const titleElement = heroTitle.querySelector('[data-i18n="hero.title"]');
 
-            const typeWriter = () => {
-                if (index < text.length) {
-                    heroTitle.textContent += text.charAt(index);
-                    index++;
-                    setTimeout(typeWriter, 50);
-                }
-            };
+            if (!titleElement.dataset.typed) {
+                titleElement.dataset.typed = 'true';
+                const originalText = titleElement.textContent;
+                titleElement.textContent = '';
+                let index = 0;
 
-            setTimeout(typeWriter, 500);
+                const typeWriter = () => {
+                    if (index < originalText.length) {
+                        titleElement.textContent += originalText.charAt(index);
+                        index++;
+                        setTimeout(typeWriter, 50);
+                    }
+                };
+
+                setTimeout(typeWriter, 500);
+            }
         }
     }
 

@@ -62,7 +62,80 @@
             scroll-behavior: smooth;
         }
 
-        /* Mobile optimizations */
+        /* Enhanced Mobile optimizations */
+        /* Extra small screens (< 576px) */
+        @media (max-width: 575px) {
+            .hero-title {
+                font-size: 1.75rem;
+                line-height: 1.1;
+                margin-bottom: 1rem;
+            }
+
+            .hero-gradient {
+                padding: 0.75rem;
+            }
+
+            .feature-card {
+                margin-bottom: 0.75rem;
+                padding: 1.25rem !important;
+            }
+
+            .github-btn {
+                font-size: 0.85rem;
+                padding: 0.625rem 1.25rem;
+                min-height: 44px; /* iOS touch target minimum */
+            }
+
+            .nav-buttons {
+                gap: 0.5rem;
+            }
+
+            .language-switcher {
+                transform: scale(0.9);
+            }
+
+            /* Model badges responsive */
+            .model-badge {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.75rem;
+            }
+
+            /* CTA buttons mobile optimization */
+            .cta-button {
+                min-height: 48px;
+                padding: 0.75rem 1.5rem;
+            }
+
+            /* Footer mobile layout */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Small screens (576px - 767px) */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .hero-title {
+                font-size: 2.25rem;
+                line-height: 1.15;
+            }
+
+            .feature-card {
+                margin-bottom: 1rem;
+            }
+
+            .github-btn {
+                font-size: 0.9rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+
+        /* Medium screens (768px - 1023px) */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -83,17 +156,63 @@
             }
         }
 
-        @media (max-width: 640px) {
-            .hero-title {
-                font-size: 2rem;
+        /* Large screens (1024px+) */
+        @media (max-width: 1023px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
+        }
 
+        /* Extra small text adjustments */
+        @media (max-width: 640px) {
             .text-xl {
                 font-size: 1.1rem;
             }
 
             .text-lg {
                 font-size: 1rem;
+            }
+
+            .text-base {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Landscape orientation optimizations */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero-section {
+                padding-top: 3rem;
+                padding-bottom: 2rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta-buttons {
+                margin-bottom: 1rem;
+            }
+
+            nav {
+                height: 3rem;
+            }
+
+            .nav-container {
+                padding: 0.5rem;
+            }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .logo-icon {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
             }
         }
 
@@ -121,27 +240,208 @@
                 color: #e2e8f0;
             }
         }
+
+        /* Print styles */
+        @media print {
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: #000;
+                background: #fff;
+            }
+
+            nav, .cta-section, footer {
+                display: none;
+            }
+
+            .hero-section, .features-section, .tech-section {
+                page-break-inside: avoid;
+                margin-bottom: 2rem;
+            }
+
+            .hero-title {
+                font-size: 24pt;
+                margin-bottom: 1rem;
+                color: #000;
+            }
+
+            .gradient-text {
+                background: none;
+                -webkit-text-fill-color: #000;
+                color: #000;
+            }
+
+            .feature-card {
+                border: 1px solid #ccc;
+                break-inside: avoid;
+                margin-bottom: 1rem;
+            }
+
+            a[href^="http"]:after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                color: #666;
+            }
+        }
+
+        /* Enhanced touch targets for mobile */
+        @media (pointer: coarse) {
+            .github-btn, .cta-button, .lang-switcher select {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .feature-card {
+                cursor: pointer;
+            }
+
+            /* Larger tap targets for navigation */
+            nav a, nav button {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Improved focus styles for keyboard navigation */
+        @media (prefers-reduced-motion: no-preference) {
+            *:focus {
+                outline: 2px solid #667eea;
+                outline-offset: 2px;
+                border-radius: 4px;
+            }
+        }
+
+        /* Compact navigation for very small screens */
+        .nav-compact .nav-container {
+            padding: 0.25rem 0.5rem;
+        }
+
+        .nav-compact .hero-title {
+            font-size: 0.875rem;
+        }
+
+        .nav-compact .github-btn {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        /* Small landscape screen optimizations */
+        .landscape-small .hero-section {
+            padding-top: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .landscape-small .feature-section,
+        .landscape-small .tech-section {
+            padding: 1.5rem 0;
+        }
+
+        /* Safe area support for modern devices */
+        @supports (padding: max(0px)) {
+            .hero-section {
+                padding-top: max(3rem, var(--safe-area-top, 0px));
+            }
+
+            footer {
+                padding-bottom: max(2rem, var(--safe-area-bottom, 0px));
+            }
+        }
+
+        /* Enhanced touch targets */
+        @media (pointer: coarse) {
+            .feature-card {
+                min-height: 44px;
+                position: relative;
+            }
+
+            .feature-card::after {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+            }
+        }
+
+        /* Responsive navigation improvements */
+        @media (max-width: 390px) {
+            .nav-buttons {
+                gap: 0.25rem;
+            }
+
+            .language-switcher select {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.7rem;
+            }
+
+            .github-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Ultra-wide screens (> 1600px) */
+        @media (min-width: 1600px) {
+            .max-w-7xl {
+                max-width: 1400px;
+            }
+
+            .hero-title {
+                font-size: 4.5rem;
+                line-height: 1.1;
+            }
+
+            .text-xl.md\\:text-2xl {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Foldable phones support */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* Animation reduction for performance */
+        .reduced-motion *,
+        .reduced-motion *::before,
+        .reduced-motion *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+
+        /* Print improvements */
+        @media print and (min-width: 8.5in) {
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 nav-container">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 hero-gradient rounded-lg flex items-center justify-center">
-                        <i class="fas fa-code text-white text-lg"></i>
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 hero-gradient rounded-lg flex items-center justify-center logo-icon">
+                        <i class="fas fa-code text-white text-sm sm:text-lg"></i>
                     </div>
-                    <span class="text-xl font-semibold">Open Claude Code Web</span>
+                    <span class="text-base sm:text-xl font-semibold hidden xs:inline sm:inline">Open Claude Code Web</span>
+                    <span class="text-base sm:text-xl font-semibold xs:hidden sm:hidden">OCCW</span>
                 </div>
 
                 <!-- Right side buttons -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2 sm:space-x-4 nav-buttons">
                     <!-- Language switcher -->
                     <div class="lang-switcher">
-                        <select id="languageSelect" class="px-3 py-1 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
-                            <option value="en">English</option>
+                        <select id="languageSelect" class="px-2 py-1 sm:px-3 sm:py-1 rounded-lg border border-gray-300 bg-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="en">EN</option>
                             <option value="zh">中文</option>
                         </select>
                     </div>
@@ -149,8 +449,8 @@
                     <!-- GitHub Button -->
                     <a href="https://github.com/yexia553/open_claude_code_web_portal"
                        target="_blank"
-                       class="github-btn bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
-                        <i class="fab fa-github"></i>
+                       class="github-btn bg-gray-900 hover:bg-gray-800 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm">
+                        <i class="fab fa-github text-xs sm:text-sm"></i>
                         <span class="hidden sm:inline">GitHub</span>
                     </a>
                 </div>
@@ -159,132 +459,132 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <section class="pt-20 sm:pt-24 pb-12 sm:pb-16 px-3 sm:px-6 lg:px-8 hero-section">
         <div class="max-w-7xl mx-auto text-center">
-            <div class="mb-8">
-                <h1 class="hero-title text-4xl md:text-6xl font-bold mb-6">
+            <div class="mb-6 sm:mb-8">
+                <h1 class="hero-title text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
                     <span class="gradient-text" data-i18n="hero.title">Open-Source AI Coding Assistant</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto" data-i18n="hero.subtitle">
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto hero-subtitle" data-i18n="hero.subtitle">
                     Run Claude Code on your server with cost-effective AI models like GLM-4.6, Kimi K2 and more.
                     Take control of your development environment.
                 </p>
             </div>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 cta-buttons">
                 <a href="https://github.com/yexia553/open_claude_code_web_portal"
                    target="_blank"
-                   class="github-btn bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold flex items-center space-x-3 w-full sm:w-auto justify-center">
-                    <i class="fab fa-github text-xl"></i>
+                   class="github-btn bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center cta-button">
+                    <i class="fab fa-github text-lg sm:text-xl"></i>
                     <span data-i18n="hero.github">View on GitHub</span>
-                    <span class="bg-yellow-500 text-gray-900 px-2 py-1 rounded text-sm font-bold" id="githubStars">
+                    <span class="bg-yellow-500 text-gray-900 px-2 py-1 rounded text-xs sm:text-sm font-bold" id="githubStars">
                         <i class="fas fa-star"></i> <span id="starCount">0</span>
                     </span>
                 </a>
 
                 <a href="#features"
-                   class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105 w-full sm:w-auto justify-center">
+                   class="bg-purple-600 hover:bg-purple-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all hover:scale-105 w-full sm:w-auto justify-center cta-button">
                     <span data-i18n="hero.learnMore">Learn More</span>
                 </a>
             </div>
 
             <!-- Model Badges -->
-            <div class="flex flex-wrap justify-center gap-3 mb-8">
-                <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-medium">
-                    <i class="fas fa-robot mr-2"></i>GLM-4.6 Compatible
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+                <span class="model-badge px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-100 text-blue-800 rounded-full font-medium text-xs sm:text-sm">
+                    <i class="fas fa-robot mr-1 sm:mr-2"></i>GLM-4.6 Compatible
                 </span>
-                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full font-medium">
-                    <i class="fas fa-robot mr-2"></i>Kimi K2 Support
+                <span class="model-badge px-3 py-1.5 sm:px-4 sm:py-2 bg-green-100 text-green-800 rounded-full font-medium text-xs sm:text-sm">
+                    <i class="fas fa-robot mr-1 sm:mr-2"></i>Kimi K2 Support
                 </span>
-                <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-medium">
-                    <i class="fas fa-server mr-2"></i>Self-Hosted
+                <span class="model-badge px-3 py-1.5 sm:px-4 sm:py-2 bg-purple-100 text-purple-800 rounded-full font-medium text-xs sm:text-sm">
+                    <i class="fas fa-server mr-1 sm:mr-2"></i>Self-Hosted
                 </span>
-                <span class="px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-medium">
-                    <i class="fas fa-dollar-sign mr-2"></i>80% Cost Reduction
+                <span class="model-badge px-3 py-1.5 sm:px-4 sm:py-2 bg-orange-100 text-orange-800 rounded-full font-medium text-xs sm:text-sm">
+                    <i class="fas fa-dollar-sign mr-1 sm:mr-2"></i>80% Cost Reduction
                 </span>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="features.title">Why Choose Open Claude Code Web?</h2>
-                <p class="text-xl text-gray-600" data-i18n="features.subtitle">
+    <section id="features" class="py-12 sm:py-16 bg-white features-section">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-i18n="features.title">Why Choose Open Claude Code Web?</h2>
+                <p class="text-lg sm:text-xl text-gray-600" data-i18n="features.subtitle">
                     Experience the power of AI-assisted coding with complete control and cost efficiency
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 feature-grid">
                 <!-- Feature 1 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl">
-                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-robot text-white text-xl"></i>
+                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <i class="fas fa-robot text-white text-lg sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.modelFreedom.title">Model Freedom</h3>
-                    <p class="text-gray-600" data-i18n="features.modelFreedom.description">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.modelFreedom.title">Model Freedom</h3>
+                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.modelFreedom.description">
                         Choose from multiple AI models including GLM-4.6, Kimi K2, Qwen, and more.
                         No vendor lock-in, use what works best for you.
                     </p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl">
-                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <i class="fas fa-shield-alt text-white text-lg sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.privacy.title">Complete Privacy</h3>
-                    <p class="text-gray-600" data-i18n="features.privacy.description">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.privacy.title">Complete Privacy</h3>
+                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.privacy.description">
                         Your code never leaves your server. Complete data privacy and security
                         for sensitive projects and enterprise use.
                     </p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl">
-                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-dollar-sign text-white text-xl"></i>
+                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <i class="fas fa-dollar-sign text-white text-lg sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.costEffective.title">Cost Effective</h3>
-                    <p class="text-gray-600" data-i18n="features.costEffective.description">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.costEffective.title">Cost Effective</h3>
+                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.costEffective.description">
                         Reduce AI coding assistant costs by 80%+ compared to commercial alternatives.
                         Pay only for what you use.
                     </p>
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl">
-                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-code-branch text-white text-xl"></i>
+                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <i class="fas fa-code-branch text-white text-lg sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.opensource.title">Open Source</h3>
-                    <p class="text-gray-600" data-i18n="features.opensource.description">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.opensource.title">Open Source</h3>
+                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.opensource.description">
                         Completely free and open source. MIT license allows for commercial use
                         and complete customization.
                     </p>
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl">
-                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-cloud text-white text-xl"></i>
+                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <i class="fas fa-cloud text-white text-lg sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.deployment.title">Easy Deployment</h3>
-                    <p class="text-gray-600" data-i18n="features.deployment.description">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.deployment.title">Easy Deployment</h3>
+                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.deployment.description">
                         One-click deployment to any cloud server. Compatible with Cloudflare Pages
                         for frontend hosting.
                     </p>
                 </div>
 
                 <!-- Feature 6 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl">
-                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-plug text-white text-xl"></i>
+                <div class="feature-card bg-gray-50 p-6 sm:p-8 rounded-xl">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 hero-gradient rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <i class="fas fa-plug text-white text-lg sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.extensible.title">Highly Extensible</h3>
-                    <p class="text-gray-600" data-i18n="features.extensible.description">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3" data-i18n="features.extensible.title">Highly Extensible</h3>
+                    <p class="text-gray-600 text-sm sm:text-base" data-i18n="features.extensible.description">
                         Plugin system allows for custom functionality. Integrates with your
                         existing development tools.
                     </p>
@@ -294,64 +594,64 @@
     </section>
 
     <!-- Technical Specs -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="tech.title">Technical Architecture</h2>
-                <p class="text-xl text-gray-600" data-i18n="tech.subtitle">
+    <section class="py-12 sm:py-16 bg-gray-50 tech-section">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-i18n="tech.title">Technical Architecture</h2>
+                <p class="text-lg sm:text-xl text-gray-600" data-i18n="tech.subtitle">
                     Built with modern web technologies for optimal performance
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <h3 class="text-xl font-semibold mb-4" data-i18n="tech.frontend.title">Frontend</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>Modern HTML5 + CSS3 + JavaScript</li>
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>Tailwind CSS for responsive design</li>
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>Monaco Editor for code editing</li>
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>Cloudflare Pages compatible</li>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4" data-i18n="tech.frontend.title">Frontend</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-gray-600 text-sm sm:text-base">
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Modern HTML5 + CSS3 + JavaScript</li>
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Tailwind CSS for responsive design</li>
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Monaco Editor for code editing</li>
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Cloudflare Pages compatible</li>
                     </ul>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <h3 class="text-xl font-semibold mb-4" data-i18n="tech.backend.title">Backend</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>Node.js/Python server support</li>
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>WebSocket for real-time communication</li>
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>Unified AI model API interface</li>
-                        <li><i class="fas fa-check text-green-500 mr-3"></i>Easy model switching and configuration</li>
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4" data-i18n="tech.backend.title">Backend</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-gray-600 text-sm sm:text-base">
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Node.js/Python server support</li>
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>WebSocket for real-time communication</li>
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Unified AI model API interface</li>
+                        <li><i class="fas fa-check text-green-500 mr-2 sm:mr-3"></i>Easy model switching and configuration</li>
                     </ul>
                 </div>
             </div>
 
             <!-- Supported Models -->
-            <div class="bg-white p-8 rounded-xl shadow-sm">
-                <h3 class="text-xl font-semibold mb-6 text-center" data-i18n="tech.supportedModels.title">Supported AI Models</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-blue-600"></i>
+            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm">
+                <h3 class="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center" data-i18n="tech.supportedModels.title">Supported AI Models</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-blue-600 text-sm sm:text-base"></i>
                         </div>
-                        <span class="font-medium">GLM-4.6</span>
+                        <span class="font-medium text-sm sm:text-base">GLM-4.6</span>
                     </div>
-                    <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-green-600"></i>
+                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-green-600 text-sm sm:text-base"></i>
                         </div>
-                        <span class="font-medium">Kimi K2</span>
+                        <span class="font-medium text-sm sm:text-base">Kimi K2</span>
                     </div>
-                    <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-purple-600"></i>
+                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-purple-600 text-sm sm:text-base"></i>
                         </div>
-                        <span class="font-medium">Qwen Series</span>
+                        <span class="font-medium text-sm sm:text-base">Qwen Series</span>
                     </div>
-                    <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-brain text-orange-600"></i>
+                    <div class="text-center p-3 sm:p-4 bg-gray-50 rounded-lg">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-orange-600 text-sm sm:text-base"></i>
                         </div>
-                        <span class="font-medium">And More...</span>
+                        <span class="font-medium text-sm sm:text-base">And More...</span>
                     </div>
                 </div>
             </div>
@@ -359,23 +659,23 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 hero-gradient text-white">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-i18n="cta.title">
+    <section class="py-12 sm:py-16 hero-gradient text-white cta-section">
+        <div class="max-w-4xl mx-auto text-center px-3 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6" data-i18n="cta.title">
                 Ready to Take Control of Your AI Coding Assistant?
             </h2>
-            <p class="text-xl mb-8 opacity-90" data-i18n="cta.subtitle">
+            <p class="text-lg sm:text-xl mb-6 sm:mb-8 opacity-90" data-i18n="cta.subtitle">
                 Join the community and start building with affordable, private, and powerful AI assistance.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <a href="https://github.com/yexia553/open_claude_code_web_portal"
                    target="_blank"
-                   class="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105">
+                   class="bg-white text-purple-600 hover:bg-gray-100 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all hover:scale-105 cta-button">
                     <i class="fab fa-github mr-2"></i>
                     <span data-i18n="cta.github">Get Started on GitHub</span>
                 </a>
                 <a href="mailto:contact@example.com"
-                   class="bg-purple-700 hover:bg-purple-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105">
+                   class="bg-purple-700 hover:bg-purple-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all hover:scale-105 cta-button">
                     <i class="fas fa-envelope mr-2"></i>
                     <span data-i18n="cta.contact">Contact Us</span>
                 </a>
@@ -384,52 +684,52 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                            <i class="fas fa-code text-purple-600 text-lg"></i>
+    <footer class="bg-gray-900 text-white py-8 sm:py-12">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 footer-grid">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+                        <div class="w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-lg flex items-center justify-center">
+                            <i class="fas fa-code text-purple-600 text-sm sm:text-lg"></i>
                         </div>
-                        <span class="text-lg font-semibold">Open Claude Code Web</span>
+                        <span class="text-base sm:text-lg font-semibold">Open Claude Code Web</span>
                     </div>
-                    <p class="text-gray-400">
+                    <p class="text-gray-400 text-sm sm:text-base">
                         Open-source AI coding assistant for modern development teams.
                     </p>
                 </div>
 
-                <div>
-                    <h4 class="font-semibold mb-4" data-i18n="footer.links.title">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
+                <div class="text-center md:text-left">
+                    <h4 class="font-semibold mb-3 sm:mb-4" data-i18n="footer.links.title">Quick Links</h4>
+                    <ul class="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
                         <li><a href="#features" class="hover:text-white transition" data-i18n="footer.links.features">Features</a></li>
                         <li><a href="https://github.com/yexia553/open_claude_code_web_portal" class="hover:text-white transition" data-i18n="footer.links.documentation">Documentation</a></li>
                         <li><a href="https://github.com/yexia553/open_claude_code_web_portal/issues" class="hover:text-white transition" data-i18n="footer.links.support">Support</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="font-semibold mb-4" data-i18n="footer.community.title">Community</h4>
-                    <div class="flex space-x-4">
+                <div class="text-center md:text-left">
+                    <h4 class="font-semibold mb-3 sm:mb-4" data-i18n="footer.community.title">Community</h4>
+                    <div class="flex space-x-3 sm:space-x-4 justify-center md:justify-start social-links">
                         <a href="https://github.com/yexia553/open_claude_code_web_portal"
                            target="_blank"
-                           class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
-                            <i class="fab fa-github"></i>
+                           class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
+                            <i class="fas fa-github text-sm sm:text-base"></i>
                         </a>
                         <a href="#"
-                           class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
-                            <i class="fab fa-discord"></i>
+                           class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-discord text-sm sm:text-base"></i>
                         </a>
                         <a href="#"
-                           class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
-                            <i class="fab fa-twitter"></i>
+                           class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-twitter text-sm sm:text-base"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p data-i18n="footer.copyright">
+            <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400">
+                <p class="text-sm sm:text-base" data-i18n="footer.copyright">
                     © 2024 Open Claude Code Web. Licensed under MIT. Built with ❤️ by the open source community.
                 </p>
             </div>
