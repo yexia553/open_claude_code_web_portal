@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Claude Code Web - Open-Source AI Coding Assistant</title>
+    <meta name="description" content="Open-source AI coding assistant platform. Run Claude Code on your server with cost-effective models like GLM-4.6, Kimi K2 and more.">
+    <meta name="keywords" content="AI coding assistant, open source, Claude Code, GLM-4.6, Kimi K2, self-hosted">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .github-btn {
+            transition: all 0.3s ease;
+        }
+
+        .github-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .lang-switcher {
+            transition: all 0.2s ease;
+        }
+
+        .lang-switcher:hover {
+            transform: scale(1.05);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .hero-gradient {
+                padding: 1rem;
+            }
+
+            .feature-card {
+                margin-bottom: 1rem;
+            }
+
+            .github-btn {
+                font-size: 0.9rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .text-xl {
+                font-size: 1.1rem;
+            }
+
+            .text-lg {
+                font-size: 1rem;
+            }
+        }
+
+        /* High contrast and accessibility */
+        @media (prefers-contrast: high) {
+            .gradient-text {
+                -webkit-text-fill-color: #667eea;
+                background: none;
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .dark-mode-bg {
+                background-color: #0f172a;
+                color: #e2e8f0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 hero-gradient rounded-lg flex items-center justify-center">
+                        <i class="fas fa-code text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-semibold">Open Claude Code Web</span>
+                </div>
+
+                <!-- Right side buttons -->
+                <div class="flex items-center space-x-4">
+                    <!-- Language switcher -->
+                    <div class="lang-switcher">
+                        <select id="languageSelect" class="px-3 py-1 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="en">English</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+
+                    <!-- GitHub Button -->
+                    <a href="https://github.com/yexia553/open_claude_code_web_portal"
+                       target="_blank"
+                       class="github-btn bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                        <i class="fab fa-github"></i>
+                        <span class="hidden sm:inline">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="mb-8">
+                <h1 class="hero-title text-4xl md:text-6xl font-bold mb-6">
+                    <span class="gradient-text" data-i18n="hero.title">Open-Source AI Coding Assistant</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto" data-i18n="hero.subtitle">
+                    Run Claude Code on your server with cost-effective AI models like GLM-4.6, Kimi K2 and more.
+                    Take control of your development environment.
+                </p>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <a href="https://github.com/yexia553/open_claude_code_web_portal"
+                   target="_blank"
+                   class="github-btn bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold flex items-center space-x-3 w-full sm:w-auto justify-center">
+                    <i class="fab fa-github text-xl"></i>
+                    <span data-i18n="hero.github">View on GitHub</span>
+                    <span class="bg-yellow-500 text-gray-900 px-2 py-1 rounded text-sm font-bold" id="githubStars">
+                        <i class="fas fa-star"></i> <span id="starCount">0</span>
+                    </span>
+                </a>
+
+                <a href="#features"
+                   class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105 w-full sm:w-auto justify-center">
+                    <span data-i18n="hero.learnMore">Learn More</span>
+                </a>
+            </div>
+
+            <!-- Model Badges -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-medium">
+                    <i class="fas fa-robot mr-2"></i>GLM-4.6 Compatible
+                </span>
+                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full font-medium">
+                    <i class="fas fa-robot mr-2"></i>Kimi K2 Support
+                </span>
+                <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-medium">
+                    <i class="fas fa-server mr-2"></i>Self-Hosted
+                </span>
+                <span class="px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-medium">
+                    <i class="fas fa-dollar-sign mr-2"></i>80% Cost Reduction
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="features.title">Why Choose Open Claude Code Web?</h2>
+                <p class="text-xl text-gray-600" data-i18n="features.subtitle">
+                    Experience the power of AI-assisted coding with complete control and cost efficiency
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-xl">
+                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.modelFreedom.title">Model Freedom</h3>
+                    <p class="text-gray-600" data-i18n="features.modelFreedom.description">
+                        Choose from multiple AI models including GLM-4.6, Kimi K2, Qwen, and more.
+                        No vendor lock-in, use what works best for you.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-xl">
+                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.privacy.title">Complete Privacy</h3>
+                    <p class="text-gray-600" data-i18n="features.privacy.description">
+                        Your code never leaves your server. Complete data privacy and security
+                        for sensitive projects and enterprise use.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-xl">
+                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-dollar-sign text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.costEffective.title">Cost Effective</h3>
+                    <p class="text-gray-600" data-i18n="features.costEffective.description">
+                        Reduce AI coding assistant costs by 80%+ compared to commercial alternatives.
+                        Pay only for what you use.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-xl">
+                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code-branch text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.opensource.title">Open Source</h3>
+                    <p class="text-gray-600" data-i18n="features.opensource.description">
+                        Completely free and open source. MIT license allows for commercial use
+                        and complete customization.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-xl">
+                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cloud text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.deployment.title">Easy Deployment</h3>
+                    <p class="text-gray-600" data-i18n="features.deployment.description">
+                        One-click deployment to any cloud server. Compatible with Cloudflare Pages
+                        for frontend hosting.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-xl">
+                    <div class="w-12 h-12 hero-gradient rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-plug text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-i18n="features.extensible.title">Highly Extensible</h3>
+                    <p class="text-gray-600" data-i18n="features.extensible.description">
+                        Plugin system allows for custom functionality. Integrates with your
+                        existing development tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="tech.title">Technical Architecture</h2>
+                <p class="text-xl text-gray-600" data-i18n="tech.subtitle">
+                    Built with modern web technologies for optimal performance
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4" data-i18n="tech.frontend.title">Frontend</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>Modern HTML5 + CSS3 + JavaScript</li>
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>Tailwind CSS for responsive design</li>
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>Monaco Editor for code editing</li>
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>Cloudflare Pages compatible</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4" data-i18n="tech.backend.title">Backend</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>Node.js/Python server support</li>
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>WebSocket for real-time communication</li>
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>Unified AI model API interface</li>
+                        <li><i class="fas fa-check text-green-500 mr-3"></i>Easy model switching and configuration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Supported Models -->
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+                <h3 class="text-xl font-semibold mb-6 text-center" data-i18n="tech.supportedModels.title">Supported AI Models</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-blue-600"></i>
+                        </div>
+                        <span class="font-medium">GLM-4.6</span>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-green-600"></i>
+                        </div>
+                        <span class="font-medium">Kimi K2</span>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-purple-600"></i>
+                        </div>
+                        <span class="font-medium">Qwen Series</span>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain text-orange-600"></i>
+                        </div>
+                        <span class="font-medium">And More...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 hero-gradient text-white">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-i18n="cta.title">
+                Ready to Take Control of Your AI Coding Assistant?
+            </h2>
+            <p class="text-xl mb-8 opacity-90" data-i18n="cta.subtitle">
+                Join the community and start building with affordable, private, and powerful AI assistance.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://github.com/yexia553/open_claude_code_web_portal"
+                   target="_blank"
+                   class="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105">
+                    <i class="fab fa-github mr-2"></i>
+                    <span data-i18n="cta.github">Get Started on GitHub</span>
+                </a>
+                <a href="mailto:contact@example.com"
+                   class="bg-purple-700 hover:bg-purple-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105">
+                    <i class="fas fa-envelope mr-2"></i>
+                    <span data-i18n="cta.contact">Contact Us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                            <i class="fas fa-code text-purple-600 text-lg"></i>
+                        </div>
+                        <span class="text-lg font-semibold">Open Claude Code Web</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Open-source AI coding assistant for modern development teams.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4" data-i18n="footer.links.title">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-white transition" data-i18n="footer.links.features">Features</a></li>
+                        <li><a href="https://github.com/yexia553/open_claude_code_web_portal" class="hover:text-white transition" data-i18n="footer.links.documentation">Documentation</a></li>
+                        <li><a href="https://github.com/yexia553/open_claude_code_web_portal/issues" class="hover:text-white transition" data-i18n="footer.links.support">Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4" data-i18n="footer.community.title">Community</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/yexia553/open_claude_code_web_portal"
+                           target="_blank"
+                           class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#"
+                           class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#"
+                           class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p data-i18n="footer.copyright">
+                    © 2024 Open Claude Code Web. Licensed under MIT. Built with ❤️ by the open source community.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

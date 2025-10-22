@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Open Claude Code Web</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to Open Claude Code Web homepage.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .code-character {
+            font-family: 'Courier New', monospace;
+            opacity: 0.3;
+            position: absolute;
+            font-size: 20px;
+            color: #667eea;
+            animation: drift 20s infinite linear;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(100vh) rotate(0deg); }
+            to { transform: translateY(-100px) rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <!-- Floating code characters -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="code-character" style="left: 10%; animation-delay: 0s;">&lt;/&gt;</div>
+        <div class="code-character" style="left: 20%; animation-delay: 2s;">{}</div>
+        <div class="code-character" style="left: 30%; animation-delay: 4s;">()</div>
+        <div class="code-character" style="left: 40%; animation-delay: 6s;">[]</div>
+        <div class="code-character" style="left: 50%; animation-delay: 8s;">#</div>
+        <div class="code-character" style="left: 60%; animation-delay: 10s;">//</div>
+        <div class="code-character" style="left: 70%; animation-delay: 12s;">=&gt;</div>
+        <div class="code-character" style="left: 80%; animation-delay: 14s;">...</div>
+        <div class="code-character" style="left: 90%; animation-delay: 16s;">&amp;</div>
+    </div>
+
+    <div class="max-w-2xl mx-auto text-center relative z-10">
+        <!-- 404 Icon -->
+        <div class="mb-8 float-animation">
+            <div class="w-32 h-32 hero-gradient rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                <span class="text-white text-6xl font-bold">404</span>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            <span class="gradient-text">Page Not Found</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-8 max-w-lg mx-auto">
+            Oops! The page you're looking for seems to have vanished into the digital void.
+            Let's get you back to coding with AI assistance.
+        </p>
+
+        <!-- Error Details (for developers) -->
+        <div class="bg-gray-100 rounded-lg p-4 mb-8 text-left max-w-md mx-auto">
+            <p class="text-sm text-gray-500 font-mono">
+                Error: 404 - Page Not Found<br>
+                The requested URL could not be found on this server.
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/"
+               class="hero-gradient text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all hover:scale-105">
+                <i class="fas fa-home mr-2"></i>
+                Back to Homepage
+            </a>
+
+            <a href="https://github.com/yexia553/open_claude_code_web_portal"
+               target="_blank"
+               class="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105">
+                <i class="fab fa-github mr-2"></i>
+                GitHub Repository
+            </a>
+        </div>
+
+        <!-- Helpful Links -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <p class="text-gray-500 mb-4">You might be looking for:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="/#features" class="text-purple-600 hover:text-purple-700 underline">Features</a>
+                <span class="text-gray-400">•</span>
+                <a href="https://github.com/yourusername/open-claude-code-web#installation" class="text-purple-600 hover:text-purple-700 underline">Installation Guide</a>
+                <span class="text-gray-400">•</span>
+                <a href="https://github.com/yourusername/open-claude-code-web/issues" class="text-purple-600 hover:text-purple-700 underline">Support</a>
+            </div>
+        </div>
+
+        <!-- Fun Message -->
+        <div class="mt-8 text-sm text-gray-400">
+            <p>Even AI assistants get lost sometimes. 🤖</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive fun
+        document.addEventListener('DOMContentLoaded', () => {
+            const codeChars = document.querySelectorAll('.code-character');
+
+            // Make characters interactive
+            codeChars.forEach(char => {
+                char.addEventListener('mouseenter', () => {
+                    char.style.opacity = '1';
+                    char.style.fontSize = '30px';
+                });
+
+                char.addEventListener('mouseleave', () => {
+                    char.style.opacity = '0.3';
+                    char.style.fontSize = '20px';
+                });
+            });
+
+            // Console message for developers
+            console.log('%c🤖 Open Claude Code Web', 'font-size: 20px; color: #667eea; font-weight: bold;');
+            console.log('%cLooks like you found our 404 page! Want to contribute? Check out our GitHub repository.', 'font-size: 14px; color: #666;');
+            console.log('%chttps://github.com/yexia553/open_claude_code_web_portal', 'font-size: 12px; color: #999;');
+        });
+    </script>
+</body>
+</html>
