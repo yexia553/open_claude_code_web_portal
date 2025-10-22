@@ -512,8 +512,79 @@
             <div class="text-center mb-8 sm:mb-12">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-i18n="features.title">Why Choose Open Claude Code Web?</h2>
                 <p class="text-lg sm:text-xl text-gray-600" data-i18n="features.subtitle">
-                    Experience the power of AI-assisted coding with complete control and cost efficiency
+                    We built Open Claude Code Web because we wanted more flexibility than what commercial platforms offer. Experience true freedom in AI-assisted coding with complete control and cost efficiency.
                 </p>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="mb-12 sm:mb-16">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <!-- Anthropic Claude Code -->
+                        <div class="bg-red-50 p-6 sm:p-8 border-r border-red-100">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-lock text-white"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-red-800" data-i18n="features.comparison.anthropic.title">Anthropic Claude Code</h3>
+                            </div>
+                            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base text-red-700" id="anthropic-limitations">
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle mt-0.5 mr-2 text-red-500"></i>
+                                    <span>Locked to Anthropic's models only</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle mt-0.5 mr-2 text-red-500"></i>
+                                    <span>Code processed on cloud servers</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle mt-0.5 mr-2 text-red-500"></i>
+                                    <span>High monthly subscription fees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle mt-0.5 mr-2 text-red-500"></i>
+                                    <span>Vendor lock-in and dependency</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle mt-0.5 mr-2 text-red-500"></i>
+                                    <span>Limited customization options</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Open Claude Code Web -->
+                        <div class="bg-green-50 p-6 sm:p-8">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-unlock text-white"></i>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-semibold text-green-800" data-i18n="features.comparison.open.title">Open Claude Code Web</h3>
+                            </div>
+                            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base text-green-700" id="open-advantages">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-0.5 mr-2 text-green-500"></i>
+                                    <span>Multiple models: GLM-4.6, Kimi K2, Qwen, and more</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-0.5 mr-2 text-green-500"></i>
+                                    <span>Complete privacy - code stays on your server</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-0.5 mr-2 text-green-500"></i>
+                                    <span>80%+ cost reduction compared to alternatives</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-0.5 mr-2 text-green-500"></i>
+                                    <span>Complete freedom and independence</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle mt-0.5 mr-2 text-green-500"></i>
+                                    <span>Open source and fully customizable</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 feature-grid">
@@ -586,10 +657,11 @@
                     <i class="fab fa-github mr-2"></i>
                     <span data-i18n="cta.github">Get Started on GitHub</span>
                 </a>
-                <a href="mailto:contact@example.com"
+                <a href="https://github.com/yexia553/open_claude_code_web_portal/discussions"
+                   target="_blank"
                    class="bg-purple-700 hover:bg-purple-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all hover:scale-105 cta-button">
-                    <i class="fas fa-envelope mr-2"></i>
-                    <span data-i18n="cta.contact">Contact Us</span>
+                    <i class="fas fa-users mr-2"></i>
+                    <span data-i18n="cta.contact">Join Community</span>
                 </a>
             </div>
         </div>
@@ -628,13 +700,15 @@
                            class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
                             <i class="fas fa-github text-sm sm:text-base"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://github.com/yexia553/open_claude_code_web_portal/discussions"
+                           target="_blank"
                            class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
-                            <i class="fab fa-discord text-sm sm:text-base"></i>
+                            <i class="fas fa-comments text-sm sm:text-base"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://github.com/yexia553/open_claude_code_web_portal/issues"
+                           target="_blank"
                            class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition">
-                            <i class="fab fa-twitter text-sm sm:text-base"></i>
+                            <i class="fas fa-bug text-sm sm:text-base"></i>
                         </a>
                     </div>
                 </div>
